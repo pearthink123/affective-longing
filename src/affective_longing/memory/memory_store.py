@@ -48,6 +48,30 @@ class MemoryStore:
         self.collection.add(documents=[text], metadatas=[metadata], ids=[memory_id])
         return memory_id
 
+    def delete_by_id(self, memory_id: str) -> None:
+        """Delete a memory by ID."""
+        self.collection.delete(ids=[memory_id])
+
+    def delete_by_ids(self, memory_ids: list[str]) -> None:
+        """Delete multiple memories by IDs."""
+        self.collection.delete(ids=memory_ids)
+
+    def clear(self) -> None:
+        """Delete all memories. Use with caution!"""
+        all_ids = self.collection.get()["ids"]
+        if all_ids:
+            self.collection.delete(ids=all_ids)
+
+    def get_all(self) -> list[dict]:
+        """Get all stored memories."""
+        results = self.collection.get(include=["documents", "metadatas"])
+        return [
+            {"id": id_, "text": doc, "metadata": meta}
+            for id_, doc, meta in zip(
+                results["ids"], results["documents"], results["metadatas"]
+            )
+        ]
+
     def query(
         self, query_text: str, top_k: int = 5, similarity_threshold: float = 0.65
     ) -> list[dict]:

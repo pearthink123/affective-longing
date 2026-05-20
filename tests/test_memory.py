@@ -51,6 +51,39 @@ class TestMemoryStore:
         results = store.query("任何内容")
         assert results == []
 
+    def test_delete_by_id(self, store):
+        mid = store.add("测试记忆")
+        assert store.count() == 1
+        store.delete_by_id(mid)
+        assert store.count() == 0
+
+    def test_delete_by_ids(self, store):
+        id1 = store.add("记忆1")
+        id2 = store.add("记忆2")
+        id3 = store.add("记忆3")
+        assert store.count() == 3
+        store.delete_by_ids([id1, id3])
+        assert store.count() == 1
+        # Remaining should be id2
+        remaining = store.get_all()
+        assert remaining[0]["id"] == id2
+
+    def test_clear(self, store):
+        store.add("记忆1")
+        store.add("记忆2")
+        store.add("记忆3")
+        assert store.count() == 3
+        store.clear()
+        assert store.count() == 0
+
+    def test_get_all(self, store):
+        store.add("记忆1", metadata={"type": "a"})
+        store.add("记忆2", metadata={"type": "b"})
+        all_memories = store.get_all()
+        assert len(all_memories) == 2
+        texts = {m["text"] for m in all_memories}
+        assert texts == {"记忆1", "记忆2"}
+
 
 class TestTriggerEngine:
     def test_no_trigger_without_memories(self, store):
