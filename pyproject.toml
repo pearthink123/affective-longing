@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "affective-longing"
+version = "0.1.0"
+description = "Emotional extension for AI companions — memory triggers, relationship states, self-emotion."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "pear think", email = "gangwang694@gmail.com" },
+]
+keywords = ["ai", "companion", "emotion", "memory", "longing", "relationship"]
+dependencies = [
+    "revive-companion>=1.0.0",
+    "sentence-transformers>=2.2",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/pearthink123/affective-longing"
+Repository = "https://github.com/pearthink123/affective-longing"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+check_untyped_defs = true
