@@ -7,3 +7,9 @@ build/
 *.egg
 .mypy_cache/
 .ruff_cache/
+demo_memory_db/
+test_db/
+*.sqlite3
+__pycache__/
+.venv/
+*.egg-info/
