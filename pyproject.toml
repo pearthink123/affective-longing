@@ -15,10 +15,13 @@ authors = [
 keywords = ["ai", "companion", "emotion", "memory", "longing", "relationship"]
 dependencies = [
     "revive-companion>=1.0.0",
-    "sentence-transformers>=2.2",
 ]
 
 [project.optional-dependencies]
+memory = [
+    "sentence-transformers>=3.0.0",
+    "chromadb>=0.5.0",
+]
 test = ["pytest>=7.0"]
 
 [project.urls]
