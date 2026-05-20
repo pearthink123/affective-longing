@@ -13,3 +13,4 @@ test_db/
 __pycache__/
 .venv/
 *.egg-info/
+companion_memory_db/
