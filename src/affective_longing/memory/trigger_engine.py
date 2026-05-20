@@ -54,7 +54,7 @@ class TriggerEngine:
             weighted_sims.append(m["similarity"] * recency_weight)
 
         weighted_score = float(np.mean(weighted_sims))
-        trigger_score = min(1.0, weighted_score * self.boost_factor / self.boost_factor)
+        trigger_score = min(1.0, weighted_score * self.boost_factor)
 
         return {
             "trigger_score": trigger_score,
