@@ -5,6 +5,11 @@ Built on revive-companion, adds:
 - Memory triggers (embedding similarity)
 - Relationship state machine (HMM + OU process)
 - AI self-emotion modeling (VAD model)
+
+Three layers, one decision:
+1. Memory — past memories trigger present longing
+2. Relationship — 6-stage lifecycle with OU decay
+3. Emotion — VAD model for AI's internal state
 """
 
 from .emotion import Emotion, EmotionEngine, EmotionEngineConfig, EmotionalState
