@@ -15,6 +15,7 @@ authors = [
 keywords = ["ai", "companion", "emotion", "memory", "longing", "relationship"]
 dependencies = [
     "revive-companion>=1.0.0",
+    "numpy>=1.23",
 ]
 
 [project.optional-dependencies]

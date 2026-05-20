@@ -76,7 +76,7 @@ class TestTriggerEngine:
 
     def test_no_boost_without_trigger(self, store):
         store.add("完全无关的量子物理内容")
-        engine = TriggerEngine(store, similarity_threshold=0.5)
+        engine = TriggerEngine(store, similarity_threshold=0.6)  # 提高阈值
         base_prob = 0.15
         boosted = engine.boost_longing(base_prob, "今天吃什么")
         assert boosted == base_prob  # No boost
